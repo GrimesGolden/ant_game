@@ -286,6 +286,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9d91fae2703d43046a1c37804ae23dad,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9d91fae2703d43046a1c37804ae23dad,
         type: 3}
       propertyPath: m_Name
@@ -1542,6 +1547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1552024810}
+  - component: {fileID: 1552024811}
   m_Layer: 3
   m_Name: Pistol
   m_TagString: Untagged
@@ -1565,6 +1571,18 @@ Transform:
   - {fileID: 638310616}
   m_Father: {fileID: 2049011941}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -5}
+--- !u!114 &1552024811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552024809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b9b3f7907aff5499a6b2a7a38f95ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1592615996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1809,7 @@ GameObject:
   - component: {fileID: 1743310148}
   - component: {fileID: 1743310147}
   - component: {fileID: 1743310149}
+  - component: {fileID: 1743310150}
   m_Layer: 6
   m_Name: Robot
   m_TagString: Untagged
@@ -1812,7 +1831,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1848,6 +1867,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea54b8133281aef4cb051e576aa326ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &1743310150
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743310146}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1780024406
 GameObject:
   m_ObjectHideFlags: 0
