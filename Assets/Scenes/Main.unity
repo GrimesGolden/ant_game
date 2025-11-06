@@ -575,6 +575,12 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8ecbbd67baf274745aaff41a34fe2091, type: 2}
   m_BuildHeightMesh: 0
+--- !u!4 &796604549 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+    type: 3}
+  m_PrefabInstance: {fileID: 2049011940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,6 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea54b8133281aef4cb051e576aa326ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 796604549}
 --- !u!1 &1780024406
 GameObject:
   m_ObjectHideFlags: 0
