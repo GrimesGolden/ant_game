@@ -6,21 +6,18 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     StarterAssetsInputs starterAssetsInputs;
-    ParticleSystem muzzleFlash; 
- //   EnemyHealth enemyHealth;
+    ParticleSystem muzzleFlash;
+    Animator weaponAnimator;
+    const string SHOOT_STRING = "Shoot"; 
     void Awake()
     {
         // Get this main script from the parent (player)
-        // This starter assets script is created by the FirstPersonController, a controller given by unity for moduler input binding. 
+        // This starter assets script belongs to the PlayerCapsule
+        // It is created by unity for moduler input binding (comes in the starter assets). 
         starterAssetsInputs = gameObject.GetComponentInParent<StarterAssetsInputs>();
-        muzzleFlash = gameObject.GetComponentInChildren<ParticleSystem>(); 
+        muzzleFlash = gameObject.GetComponentInChildren<ParticleSystem>();
+        weaponAnimator = gameObject.GetComponentInParent<Animator>(); 
     }
-    
-    //void Start()
-   // {   
-        // One way of getting the script, though you could also just serialize. 
-    //    enemyHealth = GameObject.FindAnyObjectByType<Robot>().GetComponent<EnemyHealth>(); 
-  //  }
     void Update()
     {
         HandleShoot(); 
@@ -43,16 +40,19 @@ public class Weapon : MonoBehaviour
             // eliminate one indentation block
             return;
         }
-        
+
         muzzleFlash.Play();
+        // You can see docs for this but arguments: animation name, layer, and time to begin animation (0f = beginning)
+        weaponAnimator.Play(SHOOT_STRING, 0, 0f);
+         // Then use this method to turn the public bool back to false. 
+        // could also just have gotten the public shoot bool and turned it false, but using the method is clearer.
+        starterAssetsInputs.ShootInput(false);
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity) && hit.collider.tag == "Enemy")
         {   
-            // You could also just check that enemyHealth just returns null with if(enemyHealth) but I chose to use a tag. 
+            // You could also just check that enemyHealth returns null with if(enemyHealth) but I chose to use a tag. 
             EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(damageAmount);
         }
-        starterAssetsInputs.ShootInput(false); // use the method to turn the public bool back to false. 
-        // could also just have gotten the public shoot bool and turned it false, but using the method is clearer. 
     }
 }
