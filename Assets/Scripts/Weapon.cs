@@ -6,12 +6,14 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     StarterAssetsInputs starterAssetsInputs;
+    ParticleSystem muzzleFlash; 
  //   EnemyHealth enemyHealth;
     void Awake()
     {
         // Get this main script from the parent (player)
         // This starter assets script is created by the FirstPersonController, a controller given by unity for moduler input binding. 
         starterAssetsInputs = gameObject.GetComponentInParent<StarterAssetsInputs>();
+        muzzleFlash = gameObject.GetComponentInChildren<ParticleSystem>(); 
     }
     
     //void Start()
@@ -34,13 +36,15 @@ public class Weapon : MonoBehaviour
         // Note that RayCastHit will only return a value if we hit a collider. This prevents null ref
 
         RaycastHit hit;
-        const int damageAmount = 45; 
+        const int damageAmount = 45;
 
-        if(!starterAssetsInputs.shoot)
-        {   
+        if (!starterAssetsInputs.shoot)
+        {
             // eliminate one indentation block
-            return; 
+            return;
         }
+        
+        muzzleFlash.Play();
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity) && hit.collider.tag == "Enemy")
         {   

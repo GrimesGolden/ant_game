@@ -27,7 +27,6 @@ public class EnemyHealth : MonoBehaviour
     {
         // Public to be called by weapons script (or others)
         currentHealth -= damageAmount;
-        Debug.Log("Blammo, direct hit, remaining enemy health is: " + currentHealth);
         CheckHealth(); 
     }
 }
