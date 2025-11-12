@@ -27,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
     {
         // Public to be called by weapons script (or others)
         currentHealth -= damageAmount;
-        CheckHealth(); 
+        CheckHealth();
+        // Could also add knockback here
     }
 }

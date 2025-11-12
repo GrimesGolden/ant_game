@@ -8,7 +8,8 @@ public class Weapon : MonoBehaviour
     StarterAssetsInputs starterAssetsInputs;
     ParticleSystem muzzleFlash;
     Animator weaponAnimator;
-    [SerializeField] GameObject hitEffect; 
+    [SerializeField] GameObject hitEffect;
+    [SerializeField] GameObject damageEffect; 
     const string SHOOT_STRING = "Shoot"; 
     void Awake()
     {
@@ -50,18 +51,23 @@ public class Weapon : MonoBehaviour
         starterAssetsInputs.ShootInput(false);
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity)) //&& hit.collider.tag == "Enemy"
-        {
+        {   
+            Vector3 hitLocation = hit.point;
+            Quaternion angle = hitEffect.transform.rotation;
             if (hit.collider.tag == "Enemy")
             {
                 EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                 enemyHealth.TakeDamage(damageAmount);
+                Instantiate(damageEffect, hitLocation, angle);
             }
-            // You could also just check that enemyHealth returns null with if(enemyHealth) but I chose to use a tag. 
-            // EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-            // enemyHealth.TakeDamage(damageAmount);
-            Vector3 hitLocation = hit.point;
-            Quaternion angle = hitEffect.transform.rotation;
-            Instantiate(hitEffect, hitLocation, angle);
+            else
+            {
+                Instantiate(hitEffect, hitLocation, angle);
+            }
+
+                // You could also just check that enemyHealth returns null with if(enemyHealth) but I chose to use a tag. 
+                // EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                // enemyHealth.TakeDamage(damageAmount);
         }
     }
 }
